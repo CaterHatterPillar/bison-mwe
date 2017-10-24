@@ -2,7 +2,9 @@
 
 typedef enum {
     Operation_ADD,
+    Operation_DIV,
     Operation_MUL,
+    Operation_SUB,
     Operation_VAL
 } Operation;
 

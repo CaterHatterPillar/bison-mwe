@@ -31,8 +31,10 @@ clean:
 
 TESTS:=\
   test_add \
+  test_div \
   test_mul \
   test_par \
+  test_sub \
   test_val \
   test_wsp
 
@@ -40,8 +42,10 @@ $(TESTS): bison_calc
 $(TESTS): RES = "25"
 
 test_add: EXPR = "5 + 20"
+test_div: EXPR = "100 / 4"
 test_mul: EXPR = "5 * 5"
 test_par: EXPR = "5 * \(2 + 3\)"
+test_sub: EXPR = "30 - 5"
 test_val: EXPR = "25"
 test_wsp: EXPR = "  20 +  5"
 

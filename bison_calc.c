@@ -24,10 +24,17 @@ Expression *ast(const char *s) {
 }
 
 int eval(Expression *e) {
-    if (e->op == Operation_ADD) {
+    switch(e->op) {
+    case Operation_ADD:
         return eval(e->l) + eval(e->r);
-    } else if (e->op == Operation_MUL) {
+    case Operation_DIV:
+        return eval(e->l) / eval(e->r);
+    case Operation_MUL:
         return eval(e->l) * eval(e->r);
+    case Operation_SUB:
+        return eval(e->l) - eval(e->r);
+    case Operation_VAL:
+        break;
     }
     return e->value;
 }

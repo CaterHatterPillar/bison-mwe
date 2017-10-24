@@ -31,13 +31,17 @@ typedef void* yyscan_t;
     Expression *expression;
 }
 
-%left '+' TOKEN_ADD
 %left '*' TOKEN_MUL
+%left '+' TOKEN_ADD
+%left '-' TOKEN_SUB
+%left '/' TOKEN_DIV
 
 %token TOKEN_LPAREN
 %token TOKEN_RPAREN
 %token TOKEN_ADD
+%token TOKEN_DIV
 %token TOKEN_MUL
+%token TOKEN_SUB
 %token <value> TOKEN_NUMBER
 
 %type <expression> expr
@@ -50,7 +54,9 @@ input
 
 expr
     : expr[L] TOKEN_ADD expr[R] { $$ = allocOperation(Operation_ADD, $L, $R); }
+    | expr[L] TOKEN_DIV expr[R] { $$ = allocOperation(Operation_DIV, $L, $R); }
     | expr[L] TOKEN_MUL expr[R] { $$ = allocOperation(Operation_MUL, $L, $R); }
+    | expr[L] TOKEN_SUB expr[R] { $$ = allocOperation(Operation_SUB, $L, $R); }
     | TOKEN_LPAREN expr[E] TOKEN_RPAREN { $$ = $E; }
     | TOKEN_NUMBER { $$ = allocNumber($1); }
     ;
