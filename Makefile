@@ -43,7 +43,7 @@ test_add: EXPR = "5 + 20"
 test_mul: EXPR = "5 * 5"
 test_par: EXPR = "5 * \(2 + 3\)"
 test_val: EXPR = "25"
-test_wsp: EXPR = "  5 * 4  +  5"
+test_wsp: EXPR = "  20 +  5"
 
 ERROR = echo "$$? != $(RES) ($(EXPR))"
 test_%:
