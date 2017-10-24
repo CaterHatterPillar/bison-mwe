@@ -48,13 +48,14 @@ char *cmd_expression(int argc, char *argv[]) {
 
 int main(int argc, char *argv[]) {
     char *expression = cmd_expression(argc, argv);
-
     Expression *e = ast(expression);
+
+    int result = 0;
     if (e) {
-        printf("%s = %d\n", expression, eval(e));
+        result = eval(e);
         freeExpression(e);
     }
 
     free(expression);
-    return 0;
+    return result;
 }
